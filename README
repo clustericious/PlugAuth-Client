@@ -1,0 +1,16 @@
+SimpleAuth-Client
+
+This is a client for SimpleAuth.
+
+See Clustericious::ClientBuilder and SimpleAuth
+for more documentation.
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+	perl Build.PL
+	./Build
+	./Build test
+	./Build install
+
