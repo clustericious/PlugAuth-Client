@@ -7,7 +7,11 @@ use Clustericious::Client;
 
 our $VERSION = '0.06';
 
-route 'welcome' => 'GET', '/';
+route 'welcome'   => 'GET', '/';
+route 'auth'      => 'GET', '/auth';
+route 'resources' => 'GET', '/authz/resources', \("user action resource");
+route 'users'     => 'GET', '/authz/user', \("user action resource_regex");
+route 'host_tag'  => 'GET', '/host', \("host tag");
 
 1;
 
