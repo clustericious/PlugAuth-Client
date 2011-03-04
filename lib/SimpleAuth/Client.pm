@@ -5,7 +5,7 @@ use warnings;
 
 use Clustericious::Client;
 
-our $VERSION = '0.06';
+our $VERSION = '0.02';
 
 route 'welcome'   => 'GET', '/';
 route 'auth'      => 'GET', '/auth';
