@@ -6,7 +6,7 @@ build_requires:
   Test::More: 0
 configure_requires:
   Module::Build: 0.36
-generated_by: 'Module::Build version 0.3607'
+generated_by: 'Module::Build version 0.3603'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -15,9 +15,9 @@ name: SimpleAuth-Client
 provides:
   SimpleAuth::Client:
     file: lib/SimpleAuth/Client.pm
-    version: 0.02
+    version: 0.03
 requires:
   Clustericious::Client: 0.08
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.02
+version: 0.03
