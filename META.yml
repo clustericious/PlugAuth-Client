@@ -15,9 +15,9 @@ name: SimpleAuth-Client
 provides:
   SimpleAuth::Client:
     file: lib/SimpleAuth/Client.pm
-    version: 0.03
+    version: 0.04
 requires:
   Clustericious::Client: 0.08
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.03
+version: 0.04
