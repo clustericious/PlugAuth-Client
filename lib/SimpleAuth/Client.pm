@@ -12,6 +12,8 @@ route 'auth'      => 'GET', '/auth';
 route 'authz'     => 'GET', '/authz/user', \("user action resource");
 route 'resources' => 'GET', '/authz/resources', \("user action resource_regex");
 route 'host_tag'  => 'GET', '/host', \("host tag");
+route 'groups'    => 'GET', '/groups', \("user");
+route 'actions'   => 'GET', '/actions';
 
 1;
 
