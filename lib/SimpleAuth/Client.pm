@@ -14,6 +14,9 @@ route 'resources' => 'GET', '/authz/resources', \("user action resource_regex");
 route 'host_tag'  => 'GET', '/host', \("host tag");
 route 'groups'    => 'GET', '/groups', \("user");
 route 'actions'   => 'GET', '/actions';
+route 'user'      => 'GET', '/user';
+route 'group'     => 'GET', '/group';
+route 'users'     => 'GET', '/users', \("group");
 
 1;
 
@@ -47,6 +50,15 @@ In a perl program :
  } else {
      print "authorization failed\n";
  }
+ 
+ # List of users
+ my @users = $r->user;
+ 
+ # List of groups 
+ my @groups = $r->group;
+ 
+ # List of users belonging to peanuts group
+ my @users = $r->users('peanuts');
 
 On the command line :
 
@@ -59,6 +71,15 @@ On the command line :
 
   # Check if a given host has the tag "trusted"
   simpleauthclient host_tag 127.0.0.1 trusted
+
+  # List of users
+  simpleauthclient user
+ 
+  # List of groups 
+  simpleauthclient group
+ 
+  # List of users belonging to peanuts group
+  simpleauthclient users peanuts
 
 =head1 DESCRIPTION
 
