@@ -33,7 +33,7 @@
    "provides" : {
       "SimpleAuth::Client" : {
          "file" : "lib/SimpleAuth/Client.pm",
-         "version" : "0.05"
+         "version" : "0.06"
       }
    },
    "release_status" : "stable",
@@ -42,5 +42,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.05"
+   "version" : "0.06"
 }

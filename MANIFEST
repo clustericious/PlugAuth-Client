@@ -4,9 +4,9 @@ eg/test.pl
 lib/SimpleAuth/Client.pm
 Makefile.PL
 MANIFEST			This list of files
+META.json
 META.yml
 README
 t/00-load.t
 t/01-get.t
 t/pod.t
-META.json
