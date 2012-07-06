@@ -24,7 +24,7 @@ route 'create_group' => 'POST', '/group', \("--group group --users user1,user2,.
 route 'delete_group' => 'DELETE', '/group', \("group");
 
 route_doc 'update_group' => 'group --users user1,user2,...';
-route_doc 'grant' => 'action resource';
+route_doc 'grant' => 'group action resource';
 
 sub update_group
 {
