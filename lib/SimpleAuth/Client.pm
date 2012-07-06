@@ -6,7 +6,7 @@ use Log::Log4perl qw(:easy);
 
 use Clustericious::Client;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 route 'welcome'   => 'GET', '/';
 route 'auth'      => 'GET', '/auth';
