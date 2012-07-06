@@ -2,6 +2,7 @@ package SimpleAuth::Client;
 
 use strict;
 use warnings;
+use Log::Log4perl qw(:easy);
 
 use Clustericious::Client;
 
@@ -17,6 +18,43 @@ route 'actions'   => 'GET', '/actions';
 route 'user'      => 'GET', '/user';
 route 'group'     => 'GET', '/group';
 route 'users'     => 'GET', '/users', \("group");
+route 'create_user'  => 'POST', '/user', \("--user user --password password");
+route 'delete_user'  => 'DELETE',  '/user', \("user");
+route 'create_group' => 'POST', '/group', \("--group group --users user1,user2,...");
+route 'delete_group' => 'DELETE', '/group', \("group");
+
+route_doc 'update_group' => 'group --users user1,user2,...';
+route_doc 'grant' => 'action resource';
+
+sub update_group
+{
+  my($self, $group, %args) = @_;
+
+  LOGDIE "group needed for update"
+    unless $group;
+
+  my $url = Mojo::URL->new( $self->server_url );
+  $url->path("/group/$group");
+
+  TRACE("updating $group ", $url->to_string);
+
+  $self->_doit('POST', $url, { users => $args{users} });
+}
+
+sub grant
+{
+  my($self, $group, $action, $resource) = @_;
+
+  LOGDIE "group, action and resource needed for grant"
+    unless $group && $action && $resource;
+
+  $resource =~ s/^\///;
+
+  my $url = Mojo::URL->new( $self->server_url );
+  $url->path("/grant/$group/$action/$resource");
+
+  $self->_doit('POST', $url);
+}
 
 1;
 
@@ -50,13 +88,13 @@ In a perl program :
  } else {
      print "authorization failed\n";
  }
- 
+
  # List of users
  my @users = $r->user;
- 
- # List of groups 
+
+ # List of groups
  my @groups = $r->group;
- 
+
  # List of users belonging to peanuts group
  my @users = $r->users('peanuts');
 
@@ -74,10 +112,10 @@ On the command line :
 
   # List of users
   simpleauthclient user
- 
-  # List of groups 
+
+  # List of groups
   simpleauthclient group
- 
+
   # List of users belonging to peanuts group
   simpleauthclient users peanuts
 
