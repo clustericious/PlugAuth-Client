@@ -10,7 +10,7 @@ our $VERSION = '0.07';
 
 route 'welcome'   => 'GET', '/';
 route 'auth'      => 'GET', '/auth';
-route 'authz'     => 'GET', '/authz/user', \("user action resource");
+route_doc 'authz' => "user action resource";
 route 'resources' => 'GET', '/authz/resources', \("user action resource_regex");
 route 'host_tag'  => 'GET', '/host', \("host tag");
 route 'groups'    => 'GET', '/groups', \("user");
@@ -26,6 +26,17 @@ route 'delete_group' => 'DELETE', '/group', \("group");
 route_doc 'update_group' => 'group --users user1,user2,...';
 route_doc 'grant' => 'group action resource';
 
+sub authz
+{
+  my($self, $user, $action, $resource) = @_;
+
+  my $url = Mojo::URL->new( $self->server_url );
+
+  $url->path("/authz/user/$user/$action$resource");
+
+  $self->_doit('GET', $url);
+}
+
 sub update_group
 {
   my($self, $group, %args) = @_;
@@ -38,7 +49,7 @@ sub update_group
 
   TRACE("updating $group ", $url->to_string);
 
-  $self->_doit('POST', $url, { users => $args{users} });
+  $self->_doit('POST', $url, { users => $args{'--users'} });
 }
 
 sub grant
