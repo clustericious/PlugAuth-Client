@@ -2,6 +2,7 @@ package SimpleAuth::Client;
 
 use strict;
 use warnings;
+use v5.10;
 use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
@@ -181,7 +182,9 @@ route_args update_group => [
 ];
 sub update_group
 {
-  my($self, $group, %args) = @_;
+  my $self = shift;
+  my $group = shift;
+  my $args = ref($_[0]) eq 'HASH' ? $_[0] : {@_}; 
 
   LOGDIE "group needed for update"
     unless $group;
@@ -191,9 +194,8 @@ sub update_group
 
   TRACE("updating $group ", $url->to_string);
 
-  $self->_doit('POST', $url, { users => $args{'--users'} });
+  $self->_doit('POST', $url, { users => $args->{users} // $args->{'--users'} });
 }
-
 
 =head2 $client-E<gt>delete_group( $group )
 
