@@ -125,6 +125,21 @@ belongs to.
 
 route groups       => 'GET', '/groups', \("user");
 
+=head2 $client-E<gt>change_password($user, $password)
+
+Change the password of the given user ($user) to a new password ($password).
+
+=cut
+
+route_doc change_password => 'username password';
+sub change_password
+{
+  my($self, $user, $password) = @_;
+  my $url = Mojo::URL->new( $self->server_url );
+  $url->path("/user/$user");
+  $self->_doit('POST', $url, { password => $password });
+}
+
 =head2 $client-E<gt>group
 
 Returns a list reference containing all group names.
