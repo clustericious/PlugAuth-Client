@@ -5,7 +5,7 @@ WriteMakefile
   'NAME' => 'SimpleAuth::Client',
   'VERSION_FROM' => 'lib/SimpleAuth/Client.pm',
   'PREREQ_PM' => {
-                   'Clustericious::Client' => '0.08',
+                   'Clustericious::Client' => '0.66',
                    'Test::More' => 0
                  },
   'INSTALLDIRS' => 'site',
