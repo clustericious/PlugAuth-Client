@@ -136,6 +136,5 @@ This module provides a perl front-end to the SimpleAuth API.
 
 =head1 SEE ALSO
 
- Clustericious::Client
- SimpleAuth
+L<Clustericious::Client>, L<SimpleAuth>
 
