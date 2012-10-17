@@ -1,5 +1,9 @@
 #!/usr/bin/env perl
 
+# PODNAME: simpleauthclient
+# ABSTRACT: simple auth command line client
+# VERSION
+
 use strict;
 use warnings;
 use File::Spec;

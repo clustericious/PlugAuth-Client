@@ -6,11 +6,8 @@ use v5.10;
 use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
-our $VERSION = '0.08';
-
-=head1 NAME
-
-SimpleAuth::Client - SimpleAuth Client
+# ABSTRACT: SimpleAuth Client
+# VERSION
 
 =head1 SYNOPSIS
 
