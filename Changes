@@ -1,0 +1,4 @@
+Revision history for SimpleAuth-Client
+
+0.09      2012-10-17 15:56:51 America/New_York
+  - add change_password method

@@ -1,0 +1,15 @@
+Build.PL
+Changes
+LICENSE
+MANIFEST
+META.json
+META.yml
+Makefile.PL
+README
+bin/simpleauthclient
+dist.ini
+eg/test.pl
+lib/SimpleAuth/Client.pm
+t/00-load.t
+t/01-get.t
+t/pod.t

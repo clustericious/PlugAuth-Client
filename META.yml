@@ -1,0 +1,28 @@
+---
+abstract: 'SimpleAuth Client'
+author:
+  - 'Graham Ollis <gollis@sesda2.com>'
+build_requires:
+  Module::Build: 0.3601
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+  Module::Build: 0.3601
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300021, CPAN::Meta::Converter version 2.120921'
+license: restrictive
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: SimpleAuth-Client
+requires:
+  Clustericious::Client: 0.08
+  Clustericious::Client::Command: 0
+  File::Basename: 0
+  File::Spec: 0
+  Log::Log4perl: 0
+  Log::Log4perl::CommandLine: 0
+  perl: v5.10.0
+  strict: 0
+  warnings: 0
+version: 0.09
