@@ -258,6 +258,16 @@ has the given host tag ($tag).
 =cut
 
 route host_tag     => 'GET', '/host', \("host tag");
+
+=head2 $client-E<gt>resources( $user, $action, $resource_regex )
+
+Returns a list reference containing the resources that match the regex
+provided ($resource_regex) that the given user ($user) can perform the
+given action ($action).  To see all the resources that the user can
+perform the given action against, pass in '.*' as the regex.
+
+=cut
+
 route resources    => 'GET', '/authz/resources', \("user action resource_regex");
 
 1;
