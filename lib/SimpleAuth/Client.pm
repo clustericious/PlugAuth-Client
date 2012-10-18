@@ -264,7 +264,7 @@ route resources    => 'GET', '/authz/resources', \("user action resource_regex")
 
 __END__
 
-=head2 COMMAND LINE
+=head1 COMMAND LINE
 
 The SimpleAuth API can also be interfaced on the command line
 using the simpleauthclient command:
