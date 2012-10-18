@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: SimpleAuth Client
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -117,7 +117,23 @@ route actions      => 'GET', '/actions';
 
 
 route host_tag     => 'GET', '/host', \("host tag");
+
+
 route resources    => 'GET', '/authz/resources', \("user action resource_regex");
+
+
+route_doc action_resources => "user";
+sub action_resources
+{
+  my($self, $user) = @_;
+  my %table;
+  foreach my $action (@{ $self->actions })
+  {
+    my $resources = $self->resources($user, $action, '/');
+    $table{$action} = $resources if @$resources > 0;
+  }
+  \%table;
+}
 
 1;
 
@@ -131,7 +147,7 @@ SimpleAuth::Client - SimpleAuth Client
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
@@ -258,7 +274,21 @@ knows about.
 Returns true if the host specified by the given IP address ($ip_address)
 has the given host tag ($tag).
 
-=head2 COMMAND LINE
+=head2 $client-E<gt>resources( $user, $action, $resource_regex )
+
+Returns a list reference containing the resources that match the regex
+provided ($resource_regex) that the given user ($user) can perform the
+given action ($action).  To see all the resources that the user can
+perform the given action against, pass in '.*' as the regex.
+
+=head2 $client-E<gt>action_resources( $user )
+
+Returns a hash reference of all actions and resources that the given
+user ($user) can perform.  The keys in the returned hash are the 
+actions and the values are list references containing the resources
+where those actions can be performed by the user.
+
+=head1 COMMAND LINE
 
 The SimpleAuth API can also be interfaced on the command line
 using the simpleauthclient command:
