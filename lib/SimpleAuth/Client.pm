@@ -270,6 +270,28 @@ perform the given action against, pass in '.*' as the regex.
 
 route resources    => 'GET', '/authz/resources', \("user action resource_regex");
 
+=head2 $client-E<gt>action_resources( $user )
+
+Returns a hash reference of all actions and resources that the given
+user ($user) can perform.  The keys in the returned hash are the 
+actions and the values are list references containing the resources
+where those actions can be performed by the user.
+
+=cut
+
+route_doc action_resources => "user";
+sub action_resources
+{
+  my($self, $user) = @_;
+  my %table;
+  foreach my $action (@{ $self->actions })
+  {
+    my $resources = $self->resources($user, $action, '/');
+    $table{$action} = $resources if @$resources > 0;
+  }
+  \%table;
+}
+
 1;
 
 __END__
