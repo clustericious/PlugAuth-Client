@@ -19,7 +19,7 @@ my %module_build_args = (
     "Graham Ollis <gollis\@sesda2.com>"
   ],
   "dist_name" => "SimpleAuth-Client",
-  "dist_version" => "0.10",
+  "dist_version" => "0.11",
   "license" => "restrictive",
   "module_name" => "SimpleAuth::Client",
   "recommends" => {},

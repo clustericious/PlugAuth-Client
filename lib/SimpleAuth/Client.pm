@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: SimpleAuth Client
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -122,6 +122,18 @@ route host_tag     => 'GET', '/host', \("host tag");
 route resources    => 'GET', '/authz/resources', \("user action resource_regex");
 
 
+sub _remove_prefixes
+{
+  my @in = sort @_;
+  my @out;
+  while(my $item = shift @in)
+  {
+    @in = grep { substr($_, 0, length $item) ne $item } @in;
+    push @out, $item;
+  }
+  @out;
+}
+
 route_doc action_resources => "user";
 sub action_resources
 {
@@ -130,7 +142,7 @@ sub action_resources
   foreach my $action (@{ $self->actions })
   {
     my $resources = $self->resources($user, $action, '/');
-    $table{$action} = $resources if @$resources > 0;
+    $table{$action} = [_remove_prefixes(@$resources)] if @$resources > 0;
   }
   \%table;
 }
@@ -147,7 +159,7 @@ SimpleAuth::Client - SimpleAuth Client
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 
