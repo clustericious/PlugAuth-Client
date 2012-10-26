@@ -279,6 +279,18 @@ where those actions can be performed by the user.
 
 =cut
 
+sub _remove_prefixes
+{
+  my @in = sort @_;
+  my @out;
+  while(my $item = shift @in)
+  {
+    @in = grep { substr($_, 0, length $item) ne $item } @in;
+    push @out, $item;
+  }
+  @out;
+}
+
 route_doc action_resources => "user";
 sub action_resources
 {
@@ -287,7 +299,7 @@ sub action_resources
   foreach my $action (@{ $self->actions })
   {
     my $resources = $self->resources($user, $action, '/');
-    $table{$action} = $resources if @$resources > 0;
+    $table{$action} = [_remove_prefixes(@$resources)] if @$resources > 0;
   }
   \%table;
 }
