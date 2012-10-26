@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - remove dupes from action_resource
+
+0.10      2012-10-18 16:21:49 America/New_York
   - add action_resources method
 
 0.09      2012-10-17 15:56:51 America/New_York
