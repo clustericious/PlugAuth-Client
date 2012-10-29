@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
-# PODNAME: simpleauthclient
-# ABSTRACT: simple auth command line client
+# PODNAME: plugauthclient
+# ABSTRACT: Plug auth command line client
 # VERSION
 
 use strict;
@@ -12,7 +12,7 @@ use File::Basename 'dirname';
 use lib join '/', File::Spec->splitdir(dirname(__FILE__)), 'lib';
 use lib join '/', File::Spec->splitdir(dirname(__FILE__)), '..', 'lib';
 
-use SimpleAuth::Client;
+use PlugAuth::Client;
 use Clustericious::Client::Command;
 use Log::Log4perl::CommandLine (':all', ':loginit' => <<"EOT");
            log4perl.rootLogger = INFO, Screen
@@ -21,5 +21,5 @@ use Log::Log4perl::CommandLine (':all', ':loginit' => <<"EOT");
            log4perl.appender.Screen.layout.ConversionPattern = [%-5p] %d %F{1} (%L) %m %n
 EOT
 
-Clustericious::Client::Command->run(SimpleAuth::Client->new, @ARGV);
+Clustericious::Client::Command->run(PlugAuth::Client->new, @ARGV);
 

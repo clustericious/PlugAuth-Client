@@ -1,4 +1,4 @@
-package SimpleAuth::Client;
+package PlugAuth::Client;
 
 use strict;
 use warnings;
@@ -6,14 +6,14 @@ use v5.10;
 use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
-# ABSTRACT: SimpleAuth Client
+# ABSTRACT: PlugAuth Client
 # VERSION
 
 =head1 SYNOPSIS
 
 In a perl program :
 
- my $r = SimpleAuth::Client->new;
+ my $r = PlugAuth::Client->new;
 
  # Check auth server status and version
  my $check = $r->status;
@@ -36,7 +36,7 @@ In a perl program :
 
 =head1 DESCRIPTION
 
-This module provides a perl front-end to the SimpleAuth API.
+This module provides a perl front-end to the PlugAuth API.
 
 =cut
 
@@ -46,7 +46,7 @@ route welcome      => 'GET', '/';
 
 =head2 $client-E<gt>auth
 
-Returns true if the SimpleAuth server can authenticate the user.  
+Returns true if the PlugAuth server can authenticate the user.  
 Username and passwords can be specified with the login method or
 via the application's configuration file, see L<Clustericious::Client>
 for details.
@@ -243,7 +243,7 @@ sub grant
 
 =head2 $client-E<gt>actions
 
-Returns a list reference containing the actions that the SimpleAuth server
+Returns a list reference containing the actions that the PlugAuth server
 knows about.
 
 =cut
@@ -310,30 +310,30 @@ __END__
 
 =head1 COMMAND LINE
 
-The SimpleAuth API can also be interfaced on the command line
-using the simpleauthclient command:
+The PlugAuth API can also be interfaced on the command line
+using the plugauthclient command:
 
   # Find all URLs containing /xyz, alice has permission to GET
-  simpleauthclient resources alice GET /xyz
+  plugauthclient resources alice GET /xyz
 
   # Check which resources containing the word "ball" are available
   # for charliebrown to perform the "kick" action :
-  simpleauthclient resources charliebrown kick ball
+  plugauthclient resources charliebrown kick ball
 
   # Check if a given host has the tag "trusted"
-  simpleauthclient host_tag 127.0.0.1 trusted
+  plugauthclient host_tag 127.0.0.1 trusted
 
   # List of users
-  simpleauthclient user
+  plugauthclient user
 
   # List of groups
-  simpleauthclient group
+  plugauthclient group
 
   # List of users belonging to peanuts group
-  simpleauthclient users peanuts
+  plugauthclient users peanuts
 
 =head1 SEE ALSO
 
-L<Clustericious::Client>, L<SimpleAuth>
+L<Clustericious::Client>, L<PlugAuth>
 
 =cut
