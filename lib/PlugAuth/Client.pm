@@ -317,32 +317,8 @@ sub action_resources
 
 __END__
 
-=head1 COMMAND LINE
-
-The PlugAuth API can also be interfaced on the command line
-using the plugauthclient command:
-
-  # Find all URLs containing /xyz, alice has permission to GET
-  plugauthclient resources alice GET /xyz
-
-  # Check which resources containing the word "ball" are available
-  # for charliebrown to perform the "kick" action :
-  plugauthclient resources charliebrown kick ball
-
-  # Check if a given host has the tag "trusted"
-  plugauthclient host_tag 127.0.0.1 trusted
-
-  # List of users
-  plugauthclient user
-
-  # List of groups
-  plugauthclient group
-
-  # List of users belonging to peanuts group
-  plugauthclient users peanuts
-
 =head1 SEE ALSO
 
-L<Clustericious::Client>, L<PlugAuth>
+L<Clustericious::Client>, L<PlugAuth>, L<plugauthclient>
 
 =cut
