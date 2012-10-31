@@ -184,7 +184,7 @@ route_args create_group => [
 =head2 $client-E<gt>update_group( $group, '--users' => $users )
 
 Update the given group ($group) replacing the existing list with
-the new list ($users), wihch is a comma separated list as a string.
+the new list ($users), which is a comma separated list as a string.
 
 =cut
 
