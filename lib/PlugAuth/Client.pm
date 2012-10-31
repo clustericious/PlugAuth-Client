@@ -224,7 +224,8 @@ action ($action) on the given resource ($resource).
 
 =cut
 
-route_doc 'grant'  => 'group action resource';
+route_doc  'grant' => 'group action resource';
+route_meta 'grant' => { dont_read_files => 1 };
 
 sub grant
 {
@@ -236,10 +237,18 @@ sub grant
   $resource =~ s/^\///;
 
   my $url = Mojo::URL->new( $self->server_url );
-  $url->path("/grant/$group/$action/$resource");
+  $url->path("/grant/$group/$action//$resource");
 
   $self->_doit('POST', $url);
 }
+
+## doesn't seem to work and requires Clustericious::Client 0.69
+#route 'grant' => 'POST' => '/grant';
+#route_args 'grant' => [
+#  { name => 'user',     type => '=s', modifies_url => 'append', positional => 'one' },
+#  { name => 'action',   type => '=s', modifies_url => 'append', positional => 'one' },
+#  { name => 'resource', type => '=s', modifies_url => 'append', positional => 'one' },
+#];
 
 =head2 $client-E<gt>actions
 
