@@ -217,6 +217,30 @@ Delete the given group ($group).
 
 route delete_group => 'DELETE', '/group', \("group");
 
+=head2 $client-E<gt>group_add_user( $group, $user )
+
+Adds the given user ($user) to the given group ($group)
+
+=cut
+
+route 'group_add_user' => 'POST' => '/group';
+route_args 'group_add_user' => [
+  { name => 'group', type => '=s', modifies_url => 'append', 'positional' => 'one' },
+  { name => 'user',  type => '=s', modifies_url => 'append', 'positional' => 'one' },
+];
+
+=head2 $client-E<gt>group_delete_user( $group, $user )
+
+Delete the given user ($user) from the given group ($group)
+
+=cut
+
+route 'group_delete_user' => 'DELETE' => '/group';
+route_args 'group_delete_user' => [
+  { name => 'group', type => '=s', modifies_url => 'append', 'positional' => 'one' },
+  { name => 'user',  type => '=s', modifies_url => 'append', 'positional' => 'one' },
+];
+
 =head2 $client-E<gt>grant( $user, $action, $resource )
 
 Grants the given user ($user) the authorization to perform the given
