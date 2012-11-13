@@ -1,9 +1,9 @@
 #!/usr/bin/env perl
 
-use SimpleAuth::Client;
+use PlugAuth::Client;
 use Data::Dumper;
 
-my $r = SimpleAuth::Client->new();
+my $r = PlugAuth::Client->new();
 
 print Dumper($r->status);
 print Dumper($r->version);

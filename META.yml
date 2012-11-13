@@ -1,5 +1,5 @@
 ---
-abstract: 'SimpleAuth Client'
+abstract: 'PlugAuth Client'
 author:
   - 'Graham Ollis <gollis@sesda2.com>'
 build_requires:
@@ -14,15 +14,15 @@ license: restrictive
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: SimpleAuth-Client
+name: PlugAuth-Client
 requires:
-  Clustericious::Client: 0.08
+  Clustericious::Client: 0.70
   Clustericious::Client::Command: 0
   File::Basename: 0
   File::Spec: 0
   Log::Log4perl: 0
   Log::Log4perl::CommandLine: 0
+  Term::Prompt: 0
+  YAML: 0
   perl: v5.10.0
-  strict: 0
-  warnings: 0
-version: 0.11
+version: 0.12

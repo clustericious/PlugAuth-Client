@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "SimpleAuth Client",
+  "ABSTRACT" => "PlugAuth Client",
   "AUTHOR" => "Graham Ollis <gollis\@sesda2.com>",
   "BUILD_REQUIRES" => {
     "Module::Build" => "0.3601",
@@ -19,23 +19,24 @@ my %WriteMakefileArgs = (
     "ExtUtils::MakeMaker" => "6.30",
     "Module::Build" => "0.3601"
   },
-  "DISTNAME" => "SimpleAuth-Client",
+  "DISTNAME" => "PlugAuth-Client",
   "EXE_FILES" => [
-    "bin/simpleauthclient"
+    "bin/plugauthpasswd",
+    "bin/plugauthclient"
   ],
   "LICENSE" => "restrictive",
-  "NAME" => "SimpleAuth::Client",
+  "NAME" => "PlugAuth::Client",
   "PREREQ_PM" => {
-    "Clustericious::Client" => "0.08",
+    "Clustericious::Client" => "0.70",
     "Clustericious::Client::Command" => 0,
     "File::Basename" => 0,
     "File::Spec" => 0,
     "Log::Log4perl" => 0,
     "Log::Log4perl::CommandLine" => 0,
-    "strict" => 0,
-    "warnings" => 0
+    "Term::Prompt" => 0,
+    "YAML" => 0
   },
-  "VERSION" => "0.11",
+  "VERSION" => "0.12",
   "test" => {
     "TESTS" => "t/*.t"
   }

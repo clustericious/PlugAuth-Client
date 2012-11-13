@@ -1,4 +1,4 @@
-package SimpleAuth::Client;
+package PlugAuth::Client;
 
 use strict;
 use warnings;
@@ -6,8 +6,8 @@ use v5.10;
 use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
-# ABSTRACT: SimpleAuth Client
-our $VERSION = '0.11'; # VERSION
+# ABSTRACT: PlugAuth Client
+our $VERSION = '0.12'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -95,22 +95,26 @@ sub update_group
 route delete_group => 'DELETE', '/group', \("group");
 
 
-route_doc 'grant'  => 'group action resource';
+route 'group_add_user' => 'POST' => '/group';
+route_args 'group_add_user' => [
+  { name => 'group', type => '=s', modifies_url => 'append', 'positional' => 'one' },
+  { name => 'user',  type => '=s', modifies_url => 'append', 'positional' => 'one' },
+];
 
-sub grant
-{
-  my($self, $group, $action, $resource) = @_;
 
-  LOGDIE "group, action and resource needed for grant"
-    unless $group && $action && $resource;
+route 'group_delete_user' => 'DELETE' => '/group';
+route_args 'group_delete_user' => [
+  { name => 'group', type => '=s', modifies_url => 'append', 'positional' => 'one' },
+  { name => 'user',  type => '=s', modifies_url => 'append', 'positional' => 'one' },
+];
 
-  $resource =~ s/^\///;
 
-  my $url = Mojo::URL->new( $self->server_url );
-  $url->path("/grant/$group/$action/$resource");
-
-  $self->_doit('POST', $url);
-}
+route 'grant' => 'POST' => '/grant';
+route_args 'grant' => [
+  { name => 'user',     type => '=s', modifies_url => 'append', positional => 'one' },
+  { name => 'action',   type => '=s', modifies_url => 'append', positional => 'one' },
+  { name => 'resource', type => '=s', modifies_url => 'append', positional => 'one' },
+];
 
 
 route actions      => 'GET', '/actions';
@@ -155,17 +159,17 @@ sub action_resources
 
 =head1 NAME
 
-SimpleAuth::Client - SimpleAuth Client
+PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 
 In a perl program :
 
- my $r = SimpleAuth::Client->new;
+ my $r = PlugAuth::Client->new;
 
  # Check auth server status and version
  my $check = $r->status;
@@ -188,13 +192,13 @@ In a perl program :
 
 =head1 DESCRIPTION
 
-This module provides a perl front-end to the SimpleAuth API.
+This module provides a perl front-end to the PlugAuth API.
 
 =head1 METHODS
 
 =head2 $client-E<gt>auth
 
-Returns true if the SimpleAuth server can authenticate the user.  
+Returns true if the PlugAuth server can authenticate the user.  
 Username and passwords can be specified with the login method or
 via the application's configuration file, see L<Clustericious::Client>
 for details.
@@ -265,11 +269,19 @@ should initially belong to this group.
 =head2 $client-E<gt>update_group( $group, '--users' => $users )
 
 Update the given group ($group) replacing the existing list with
-the new list ($users), wihch is a comma separated list as a string.
+the new list ($users), which is a comma separated list as a string.
 
 =head2 $client-E<gt>delete_group( $group )
 
 Delete the given group ($group).
+
+=head2 $client-E<gt>group_add_user( $group, $user )
+
+Adds the given user ($user) to the given group ($group)
+
+=head2 $client-E<gt>group_delete_user( $group, $user )
+
+Delete the given user ($user) from the given group ($group)
 
 =head2 $client-E<gt>grant( $user, $action, $resource )
 
@@ -278,7 +290,7 @@ action ($action) on the given resource ($resource).
 
 =head2 $client-E<gt>actions
 
-Returns a list reference containing the actions that the SimpleAuth server
+Returns a list reference containing the actions that the PlugAuth server
 knows about.
 
 =head2 $client-E<gt>host_tag($ip_address, $tag)
@@ -300,33 +312,9 @@ user ($user) can perform.  The keys in the returned hash are the
 actions and the values are list references containing the resources
 where those actions can be performed by the user.
 
-=head1 COMMAND LINE
-
-The SimpleAuth API can also be interfaced on the command line
-using the simpleauthclient command:
-
-  # Find all URLs containing /xyz, alice has permission to GET
-  simpleauthclient resources alice GET /xyz
-
-  # Check which resources containing the word "ball" are available
-  # for charliebrown to perform the "kick" action :
-  simpleauthclient resources charliebrown kick ball
-
-  # Check if a given host has the tag "trusted"
-  simpleauthclient host_tag 127.0.0.1 trusted
-
-  # List of users
-  simpleauthclient user
-
-  # List of groups
-  simpleauthclient group
-
-  # List of users belonging to peanuts group
-  simpleauthclient users peanuts
-
 =head1 SEE ALSO
 
-L<Clustericious::Client>, L<SimpleAuth>
+L<Clustericious::Client>, L<PlugAuth>, L<plugauthclient>, L<plugauthpasswd>
 
 =head1 AUTHOR
 

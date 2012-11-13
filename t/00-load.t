@@ -1,9 +1,12 @@
 #!perl
 
+use strict;
+use warnings;
+
 use Test::More tests => 1;
 
 BEGIN {
-    use_ok( 'SimpleAuth::Client' );
+    use_ok( 'PlugAuth::Client' );
 }
 
-diag( "Testing SimpleAuth::Client $SimpleAuth::Client::VERSION, Perl $], $^X" );
+diag( "Testing PlugAuth::Client $PlugAuth::Client::VERSION, Perl $], $^X" );
