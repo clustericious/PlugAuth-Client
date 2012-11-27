@@ -255,6 +255,20 @@ route_args 'grant' => [
   { name => 'resource', type => '=s', modifies_url => 'append', positional => 'one' },
 ];
 
+=head2 $client-E<gt>revoke( $user, $action, $resource )
+
+Revokes permission for the give user ($user) to perform the given action ($action)
+on the given resource ($resource).
+
+=cut
+
+route 'revoke' => 'DELETE' => '/grant';
+route_args 'revoke' => [
+  { name => 'user',     type => '=s', modifies_url => 'append', positional => 'one' },
+  { name => 'action',   type => '=s', modifies_url => 'append', positional => 'one' },
+  { name => 'resource', type => '=s', modifies_url => 'append', positional => 'one' },
+];
+
 =head2 $client-E<gt>actions
 
 Returns a list reference containing the actions that the PlugAuth server
