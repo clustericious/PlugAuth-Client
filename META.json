@@ -27,7 +27,7 @@
       },
       "runtime" : {
          "requires" : {
-            "Clustericious::Client" : "0.70",
+            "Clustericious::Client" : "0.73",
             "Clustericious::Client::Command" : "0",
             "File::Basename" : "0",
             "File::Spec" : "0",
@@ -45,6 +45,6 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.13"
+   "version" : "0.14"
 }
 

@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: PlugAuth Client
-our $VERSION = '0.13'; # VERSION
+our $VERSION = '0.14'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -36,8 +36,8 @@ route user         => 'GET', '/user';
 
 route create_user => 'POST', '/user', \("--user username --password password");
 route_args create_user => [
-  { name => 'user',     type => '=s', required => 1 },
-  { name => 'password', type => '=s', required => 1 },
+  { name => 'user',     type => '=s', required => 1, modifies_payload => 'hash' },
+  { name => 'password', type => '=s', required => 1, modifies_payload => 'hash' },
 ];
 
 
@@ -65,8 +65,8 @@ route users        => 'GET', '/users', \("group");
 
 route create_group => 'POST', '/group', \("--group group --users user1,user2,...");
 route_args create_group => [
-  { name => 'group', type => '=s', required => 1 },
-  { name => 'users', type => '=s', required => 1 },
+  { name => 'group', type => '=s', required => 1, modifies_payload => 'hash'  },
+  { name => 'users', type => '=s', required => 1, modifies_payload => 'hash'  },
 ];
 
 
@@ -171,7 +171,7 @@ PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 SYNOPSIS
 

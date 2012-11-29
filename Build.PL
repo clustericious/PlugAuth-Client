@@ -19,13 +19,13 @@ my %module_build_args = (
     "Graham Ollis <gollis\@sesda2.com>"
   ],
   "dist_name" => "PlugAuth-Client",
-  "dist_version" => "0.13",
+  "dist_version" => "0.14",
   "license" => "restrictive",
   "module_name" => "PlugAuth::Client",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Clustericious::Client" => "0.70",
+    "Clustericious::Client" => "0.73",
     "Clustericious::Client::Command" => 0,
     "File::Basename" => 0,
     "File::Spec" => 0,

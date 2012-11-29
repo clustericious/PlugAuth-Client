@@ -27,7 +27,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "restrictive",
   "NAME" => "PlugAuth::Client",
   "PREREQ_PM" => {
-    "Clustericious::Client" => "0.70",
+    "Clustericious::Client" => "0.73",
     "Clustericious::Client::Command" => 0,
     "File::Basename" => 0,
     "File::Spec" => 0,
@@ -36,7 +36,7 @@ my %WriteMakefileArgs = (
     "Term::Prompt" => 0,
     "YAML" => 0
   },
-  "VERSION" => "0.13",
+  "VERSION" => "0.14",
   "test" => {
     "TESTS" => "t/*.t"
   }

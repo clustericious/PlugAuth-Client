@@ -1,5 +1,8 @@
 Revision history for PlugAuth-Client
 
+0.14      2012-11-29 14:36:29 America/New_York
+  - use modifies_payload
+
 0.13      2012-11-29 11:56:26 America/New_York
   - fixed bug with grant on resource /
   - renamed to PlugAuth/plugauth
