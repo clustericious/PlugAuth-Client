@@ -25,4 +25,4 @@ requires:
   Term::Prompt: 0
   YAML: 0
   perl: v5.10.0
-version: 0.12
+version: 0.13

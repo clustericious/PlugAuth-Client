@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: PlugAuth Client
-our $VERSION = '0.12'; # VERSION
+our $VERSION = '0.13'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -117,6 +117,14 @@ route_args 'grant' => [
 ];
 
 
+route 'revoke' => 'DELETE' => '/grant';
+route_args 'revoke' => [
+  { name => 'user',     type => '=s', modifies_url => 'append', positional => 'one' },
+  { name => 'action',   type => '=s', modifies_url => 'append', positional => 'one' },
+  { name => 'resource', type => '=s', modifies_url => 'append', positional => 'one' },
+];
+
+
 route actions      => 'GET', '/actions';
 
 
@@ -163,7 +171,7 @@ PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 SYNOPSIS
 
@@ -287,6 +295,11 @@ Delete the given user ($user) from the given group ($group)
 
 Grants the given user ($user) the authorization to perform the given
 action ($action) on the given resource ($resource).
+
+=head2 $client-E<gt>revoke( $user, $action, $resource )
+
+Revokes permission for the give user ($user) to perform the given action ($action)
+on the given resource ($resource).
 
 =head2 $client-E<gt>actions
 

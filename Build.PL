@@ -19,7 +19,7 @@ my %module_build_args = (
     "Graham Ollis <gollis\@sesda2.com>"
   ],
   "dist_name" => "PlugAuth-Client",
-  "dist_version" => "0.12",
+  "dist_version" => "0.13",
   "license" => "restrictive",
   "module_name" => "PlugAuth::Client",
   "recommends" => {},
