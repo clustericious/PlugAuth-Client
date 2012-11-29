@@ -104,8 +104,8 @@ The new user's password
 
 route create_user => 'POST', '/user', \("--user username --password password");
 route_args create_user => [
-  { name => 'user',     type => '=s', required => 1 },
-  { name => 'password', type => '=s', required => 1 },
+  { name => 'user',     type => '=s', required => 1, modifies_payload => 'hash' },
+  { name => 'password', type => '=s', required => 1, modifies_payload => 'hash' },
 ];
 
 =head2 $client-E<gt>delete_user( $username )
@@ -177,8 +177,8 @@ should initially belong to this group.
 
 route create_group => 'POST', '/group', \("--group group --users user1,user2,...");
 route_args create_group => [
-  { name => 'group', type => '=s', required => 1 },
-  { name => 'users', type => '=s', required => 1 },
+  { name => 'group', type => '=s', required => 1, modifies_payload => 'hash'  },
+  { name => 'users', type => '=s', required => 1, modifies_payload => 'hash'  },
 ];
 
 =head2 $client-E<gt>update_group( $group, '--users' => $users )
