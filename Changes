@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
   - use modifies_payload
+  - provide granted method (GET /grat)
 
 0.13      2012-11-29 11:56:26 America/New_York
   - fixed bug with grant on resource /
