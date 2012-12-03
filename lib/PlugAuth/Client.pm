@@ -269,6 +269,14 @@ route_args 'revoke' => [
   { name => 'resource', type => '=s', modifies_url => 'append', positional => 'one' },
 ];
 
+=head2 $client-E<gt>granted
+
+Returns a list of granted permissions
+
+=cut
+
+route granted      => 'GET', '/grant';
+
 =head2 $client-E<gt>actions
 
 Returns a list reference containing the actions that the PlugAuth server
