@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: PlugAuth Client
-our $VERSION = '0.14'; # VERSION
+our $VERSION = '0.15'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -125,6 +125,9 @@ route_args 'revoke' => [
 ];
 
 
+route granted      => 'GET', '/grant';
+
+
 route actions      => 'GET', '/actions';
 
 
@@ -171,7 +174,7 @@ PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 SYNOPSIS
 
@@ -301,6 +304,10 @@ action ($action) on the given resource ($resource).
 Revokes permission for the give user ($user) to perform the given action ($action)
 on the given resource ($resource).
 
+=head2 $client-E<gt>granted
+
+Returns a list of granted permissions
+
 =head2 $client-E<gt>actions
 
 Returns a list reference containing the actions that the PlugAuth server
@@ -331,7 +338,7 @@ L<Clustericious::Client>, L<PlugAuth>, L<plugauthclient>, L<plugauthpasswd>
 
 =head1 AUTHOR
 
-Graham Ollis <gollis@sesda2.com>
+Graham Ollis <gollis@sesda3.com>
 
 =head1 COPYRIGHT AND LICENSE
 

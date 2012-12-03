@@ -1,5 +1,8 @@
 Revision history for PlugAuth-Client
 
+0.15      2012-12-03 10:51:56 America/New_York
+  - provide granted method (GET /grat)
+
 0.14      2012-11-29 14:36:29 America/New_York
   - use modifies_payload
 

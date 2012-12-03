@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "PlugAuth Client",
-  "AUTHOR" => "Graham Ollis <gollis\@sesda2.com>",
+  "AUTHOR" => "Graham Ollis <gollis\@sesda3.com>",
   "BUILD_REQUIRES" => {
     "Module::Build" => "0.3601",
     "Test::More" => 0
@@ -21,8 +21,8 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "PlugAuth-Client",
   "EXE_FILES" => [
-    "bin/plugauthpasswd",
-    "bin/plugauthclient"
+    "bin/plugauthclient",
+    "bin/plugauthpasswd"
   ],
   "LICENSE" => "restrictive",
   "NAME" => "PlugAuth::Client",
@@ -36,7 +36,7 @@ my %WriteMakefileArgs = (
     "Term::Prompt" => 0,
     "YAML" => 0
   },
-  "VERSION" => "0.14",
+  "VERSION" => "0.15",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -16,10 +16,10 @@ my %module_build_args = (
   },
   "dist_abstract" => "PlugAuth Client",
   "dist_author" => [
-    "Graham Ollis <gollis\@sesda2.com>"
+    "Graham Ollis <gollis\@sesda3.com>"
   ],
   "dist_name" => "PlugAuth-Client",
-  "dist_version" => "0.14",
+  "dist_version" => "0.15",
   "license" => "restrictive",
   "module_name" => "PlugAuth::Client",
   "recommends" => {},
@@ -36,8 +36,8 @@ my %module_build_args = (
     "perl" => "v5.10.0"
   },
   "script_files" => [
-    "bin/plugauthpasswd",
-    "bin/plugauthclient"
+    "bin/plugauthclient",
+    "bin/plugauthpasswd"
   ]
 );
 
