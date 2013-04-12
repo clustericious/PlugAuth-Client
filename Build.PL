@@ -11,7 +11,6 @@ my %module_build_args = (
     "Test::More" => 0
   },
   "configure_requires" => {
-    "ExtUtils::MakeMaker" => "6.30",
     "Module::Build" => "0.3601"
   },
   "dist_abstract" => "PlugAuth Client",
@@ -19,7 +18,7 @@ my %module_build_args = (
     "Graham Ollis <gollis\@sesda3.com>"
   ],
   "dist_name" => "PlugAuth-Client",
-  "dist_version" => "0.15",
+  "dist_version" => "0.16",
   "license" => "restrictive",
   "module_name" => "PlugAuth::Client",
   "recommends" => {},

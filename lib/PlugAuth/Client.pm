@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: PlugAuth Client
-our $VERSION = '0.15'; # VERSION
+our $VERSION = '0.16'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -42,6 +42,9 @@ route_args create_user => [
 
 
 route delete_user  => 'DELETE',  '/user', \("user");
+route_args delete_user => [
+  { name => 'user', type => '=s', required => 1, modifies_url => 'append' },
+];
 
 
 route groups       => 'GET', '/groups', \("user");
@@ -72,6 +75,7 @@ route_args create_group => [
 
 route_doc 'update_group' => 'group --users user1,user2,...';
 route_args update_group => [
+  { name => 'group', type => '=s', required => 1, modifies_url => 'append', 'positional' => 'one' },
   { name => 'users', type => '=s', required => 1 },
 ];
 sub update_group
@@ -162,9 +166,26 @@ sub action_resources
   \%table;
 }
 
+route_doc action_resource => 'audit';
+sub audit
+{
+  my($self, $year, $month, $day) = @_;
+  my $uri;
+  if(defined $day)
+  {
+    $uri = join('/', '', 'audit', $year, sprintf("%02d", $month), sprintf("%02d", $day));
+  }
+  else
+  {
+    # FIXME: Clustericious::Client doesn't handle 302 correctly
+    $uri = join('/', '', 'audit', 'today');
+  }
+  $self->_doit(GET => $uri);
+}
+
 1;
 
-
+__END__
 
 =pod
 
@@ -174,7 +195,7 @@ PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 SYNOPSIS
 
@@ -346,7 +367,3 @@ This software is copyright (c) 2012 by NASA GSFC.  No
 license is granted to other entities.
 
 =cut
-
-
-__END__
-
