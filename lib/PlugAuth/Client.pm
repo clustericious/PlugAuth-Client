@@ -115,6 +115,9 @@ Delete the user with the given username.
 =cut
 
 route delete_user  => 'DELETE',  '/user', \("user");
+route_args delete_user => [
+  { name => 'user', type => '=s', required => 1, modifies_url => 'append' },
+];
 
 =head2 $client-E<gt>groups($user)
 
@@ -190,6 +193,7 @@ the new list ($users), which is a comma separated list as a string.
 
 route_doc 'update_group' => 'group --users user1,user2,...';
 route_args update_group => [
+  { name => 'group', type => '=s', required => 1, modifies_url => 'append', 'positional' => 'one' },
   { name => 'users', type => '=s', required => 1 },
 ];
 sub update_group
@@ -338,6 +342,23 @@ sub action_resources
     $table{$action} = [_remove_prefixes(@$resources)] if @$resources > 0;
   }
   \%table;
+}
+
+route_doc action_resource => 'audit';
+sub audit
+{
+  my($self, $year, $month, $day) = @_;
+  my $uri;
+  if(defined $day)
+  {
+    $uri = join('/', '', 'audit', $year, sprintf("%02d", $month), sprintf("%02d", $day));
+  }
+  else
+  {
+    # FIXME: Clustericious::Client doesn't handle 302 correctly
+    $uri = join('/', '', 'audit', 'today');
+  }
+  $self->_doit(GET => $uri);
 }
 
 1;
