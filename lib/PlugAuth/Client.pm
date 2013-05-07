@@ -344,6 +344,12 @@ sub action_resources
   \%table;
 }
 
+=head2 $client-E<gt>audit( $year, $month, $day )
+
+Interface to the L<Audit|PlugAuth::Plugin::Audit> plugin, if it is available.
+
+=cut
+
 route_doc action_resource => 'audit';
 sub audit
 {
@@ -355,7 +361,7 @@ sub audit
   }
   else
   {
-    # FIXME: Clustericious::Client doesn't handle 302 correctly
+    # TODO: Clustericious::Client doesn't handle 302 correctly
     $uri = join('/', '', 'audit', 'today');
   }
   $self->_doit(GET => $uri);
