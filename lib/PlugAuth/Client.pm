@@ -36,7 +36,10 @@ In a perl program :
 
 =head1 DESCRIPTION
 
-This module provides a perl front-end to the PlugAuth API.
+This module provides a perl front-end to the PlugAuth API.  For a stripped
+down interface to just the authentication and authorization API (that is
+not including the user/group/authorization management functions), see
+L<PlugAuth::Client::Tiny>.
 
 =cut
 

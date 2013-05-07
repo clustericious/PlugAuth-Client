@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Documentation fixes.
 
 0.16      2013-04-12 11:41:18 America/New_York
   - added route for audit log (requires server using the Audit plugin)
