@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: PlugAuth Client
-our $VERSION = '0.17'; # VERSION
+our $VERSION = '0.18'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -196,7 +196,7 @@ PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.17
+version 0.18
 
 =head1 SYNOPSIS
 
@@ -363,7 +363,11 @@ Interface to the L<Audit|PlugAuth::Plugin::Audit> plugin, if it is available.
 
 =head1 SEE ALSO
 
-L<Clustericious::Client>, L<PlugAuth>, L<plugauthclient>, L<plugauthpasswd>
+L<Clustericious::Client>, 
+L<PlugAuth>, 
+L<plugauthclient>, 
+L<plugauthpasswd>,
+L<PlugAuth::Client::Tiny>
 
 =head1 AUTHOR
 
@@ -371,7 +375,9 @@ Graham Ollis <gollis@sesda3.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by NASA GSFC.  No
-license is granted to other entities.
+This software is copyright (c) 2012 by NASA GSFC.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut

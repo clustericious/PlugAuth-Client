@@ -20,7 +20,7 @@ my %WriteMakefileArgs = (
     "bin/plugauthclient",
     "bin/plugauthpasswd"
   ],
-  "LICENSE" => "restrictive",
+  "LICENSE" => "perl",
   "NAME" => "PlugAuth::Client",
   "PREREQ_PM" => {
     "Clustericious::Client" => "0.73",
@@ -35,7 +35,7 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "Test::More" => 0
   },
-  "VERSION" => "0.17",
+  "VERSION" => "0.18",
   "test" => {
     "TESTS" => "t/*.t"
   }
