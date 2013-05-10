@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: PlugAuth Client
-our $VERSION = '0.16'; # VERSION
+our $VERSION = '0.17'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -166,6 +166,7 @@ sub action_resources
   \%table;
 }
 
+
 route_doc action_resource => 'audit';
 sub audit
 {
@@ -177,7 +178,7 @@ sub audit
   }
   else
   {
-    # FIXME: Clustericious::Client doesn't handle 302 correctly
+    # TODO: Clustericious::Client doesn't handle 302 correctly
     $uri = join('/', '', 'audit', 'today');
   }
   $self->_doit(GET => $uri);
@@ -195,7 +196,7 @@ PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head1 SYNOPSIS
 
@@ -224,7 +225,10 @@ In a perl program :
 
 =head1 DESCRIPTION
 
-This module provides a perl front-end to the PlugAuth API.
+This module provides a perl front-end to the PlugAuth API.  For a stripped
+down interface to just the authentication and authorization API (that is
+not including the user/group/authorization management functions), see
+L<PlugAuth::Client::Tiny>.
 
 =head1 METHODS
 
@@ -352,6 +356,10 @@ Returns a hash reference of all actions and resources that the given
 user ($user) can perform.  The keys in the returned hash are the 
 actions and the values are list references containing the resources
 where those actions can be performed by the user.
+
+=head2 $client-E<gt>audit( $year, $month, $day )
+
+Interface to the L<Audit|PlugAuth::Plugin::Audit> plugin, if it is available.
 
 =head1 SEE ALSO
 

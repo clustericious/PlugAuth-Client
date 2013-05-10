@@ -4,7 +4,7 @@
       "Graham Ollis <gollis@sesda3.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300031, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.130880",
    "license" : [
       "restricted"
    ],
@@ -14,14 +14,9 @@
    },
    "name" : "PlugAuth-Client",
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "Module::Build" : "0.3601"
-         }
-      },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.3601"
+            "ExtUtils::MakeMaker" : "6.30"
          }
       },
       "runtime" : {
@@ -44,6 +39,6 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.16"
+   "version" : "0.17"
 }
 
