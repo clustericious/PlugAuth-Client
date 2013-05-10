@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Documentation fixes.
 
 0.17      2013-05-09 21:10:50 America/New_York
   - Documentation fixes.

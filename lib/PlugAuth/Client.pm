@@ -376,6 +376,10 @@ __END__
 
 =head1 SEE ALSO
 
-L<Clustericious::Client>, L<PlugAuth>, L<plugauthclient>, L<plugauthpasswd>
+L<Clustericious::Client>, 
+L<PlugAuth>, 
+L<plugauthclient>, 
+L<plugauthpasswd>,
+L<PlugAuth::Client::Tiny>
 
 =cut
