@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.18      2013-05-09 23:11:15 America/New_York
   - Documentation fixes.
 
 0.17      2013-05-09 21:10:50 America/New_York
