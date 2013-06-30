@@ -4,7 +4,6 @@ install:
   - cpanm -n Log::Log4perl
   - cpanm -n Log::Log4perl::CommandLine
   - cpanm -n Term::Prompt
-  - cpanm -n YAML
 script: HARNESS_IS_VERBOSE=1 prove -lvr t xt
 perl:
   - "5.16"

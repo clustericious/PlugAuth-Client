@@ -27,7 +27,7 @@ use v5.10;
 use Term::Prompt ();
 use File::Spec;
 use File::Basename 'dirname';
-use YAML ();
+use YAML::XS ();
 
 use lib join '/', File::Spec->splitdir(dirname(__FILE__)), 'lib';
 use lib join '/', File::Spec->splitdir(dirname(__FILE__)), '..', 'lib';
@@ -55,7 +55,7 @@ unless($new_password eq $vrf_password)
 }
 
 $client->login($user, $old_password);
-print YAML::Dump(
+print YAML::XS::Dump(
   $client->change_password($user, $new_password),
 );
 
