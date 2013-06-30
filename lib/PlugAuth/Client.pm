@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: PlugAuth Client
-our $VERSION = '0.18'; # VERSION
+our $VERSION = '0.19'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -186,7 +186,7 @@ sub audit
 
 1;
 
-__END__
+
 
 =pod
 
@@ -196,7 +196,7 @@ PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 SYNOPSIS
 
@@ -381,3 +381,7 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+

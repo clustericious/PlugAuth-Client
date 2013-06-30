@@ -4,7 +4,7 @@
       "Graham Ollis <gollis@sesda3.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.130880",
+   "generated_by" : "Dist::Zilla version 4.300021, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -28,7 +28,7 @@
             "Log::Log4perl" : "0",
             "Log::Log4perl::CommandLine" : "0",
             "Term::Prompt" : "0",
-            "YAML" : "0",
+            "YAML::XS" : "0",
             "perl" : "v5.10.0"
          }
       },
@@ -39,6 +39,17 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.18"
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/plicease/plugauth-client/issues"
+      },
+      "homepage" : "http://perl.wdlabs.com/PlugAuth-Client/",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/plicease/plugauth-client.git",
+         "web" : "https://github.com/plicease/plugauth-client"
+      }
+   },
+   "version" : "0.19"
 }
 
