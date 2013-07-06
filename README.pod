@@ -1,0 +1,192 @@
+=pod
+
+=head1 NAME
+
+PlugAuth::Client - PlugAuth Client
+
+=head1 VERSION
+
+version 0.19
+
+=head1 SYNOPSIS
+
+In a perl program :
+
+ my $r = PlugAuth::Client->new;
+
+ # Check auth server status and version
+ my $check = $r->status;
+ my $version = $r->version;
+
+ # Authenticate user "alice", pw "sesame"
+ $r->login(user => "alice", password => "sesame");
+ if ($r->auth) {
+    print "authentication succeeded\n";
+ } else {
+    print "authentication failed\n";
+ }
+
+ # Authorize "alice" to "POST" to "/board"
+ if ($r->authz("alice","POST","board")) {
+     print "authorization succeeded\n";
+ } else {
+     print "authorization failed\n";
+ }
+
+=head1 DESCRIPTION
+
+This module provides a perl front-end to the PlugAuth API.  For a stripped
+down interface to just the authentication and authorization API (that is
+not including the user/group/authorization management functions), see
+L<PlugAuth::Client::Tiny>.
+
+=head1 METHODS
+
+=head2 $client-E<gt>auth
+
+Returns true if the PlugAuth server can authenticate the user.  
+Username and passwords can be specified with the login method or
+via the application's configuration file, see L<Clustericious::Client>
+for details.
+
+=head2 $client-E<gt>authz($user $action, $resource)
+
+Returns true if the given user ($user) is authorized to perform the
+given action ($action) on the given resource ($resource).
+
+=head2 $client-E<gt>user
+
+Returns a list reference containing all usernames.
+
+=head2 $client-E<gt>create_user( \%args )
+
+Create a user with the given username and password.
+
+=over 4
+
+=item * username
+
+The new user's username
+
+=item * password
+
+The new user's password
+
+=back
+
+=head2 $client-E<gt>delete_user( $username )
+
+Delete the user with the given username.
+
+=head2 $client-E<gt>groups($user)
+
+Returns a list reference containing the groups that the given user ($user)
+belongs to.
+
+=head2 $client-E<gt>change_password($user, $password)
+
+Change the password of the given user ($user) to a new password ($password).
+
+=head2 $client-E<gt>group
+
+Returns a list reference containing all group names.
+
+=head2 $client-E<gt>users($group)
+
+Returns the list of users belonging to the given group ($group).
+
+=head2 $client-E<gt>create_group( \%args )
+
+Create a group.
+
+=over 4
+
+=item * group
+
+The name of the new group
+
+=item * users
+
+Comma separated list (as a string) of the users that
+should initially belong to this group.
+
+=back
+
+=head2 $client-E<gt>update_group( $group, '--users' => $users )
+
+Update the given group ($group) replacing the existing list with
+the new list ($users), which is a comma separated list as a string.
+
+=head2 $client-E<gt>delete_group( $group )
+
+Delete the given group ($group).
+
+=head2 $client-E<gt>group_add_user( $group, $user )
+
+Adds the given user ($user) to the given group ($group)
+
+=head2 $client-E<gt>group_delete_user( $group, $user )
+
+Delete the given user ($user) from the given group ($group)
+
+=head2 $client-E<gt>grant( $user, $action, $resource )
+
+Grants the given user ($user) the authorization to perform the given
+action ($action) on the given resource ($resource).
+
+=head2 $client-E<gt>revoke( $user, $action, $resource )
+
+Revokes permission for the give user ($user) to perform the given action ($action)
+on the given resource ($resource).
+
+=head2 $client-E<gt>granted
+
+Returns a list of granted permissions
+
+=head2 $client-E<gt>actions
+
+Returns a list reference containing the actions that the PlugAuth server
+knows about.
+
+=head2 $client-E<gt>host_tag($ip_address, $tag)
+
+Returns true if the host specified by the given IP address ($ip_address)
+has the given host tag ($tag).
+
+=head2 $client-E<gt>resources( $user, $action, $resource_regex )
+
+Returns a list reference containing the resources that match the regex
+provided ($resource_regex) that the given user ($user) can perform the
+given action ($action).  To see all the resources that the user can
+perform the given action against, pass in '.*' as the regex.
+
+=head2 $client-E<gt>action_resources( $user )
+
+Returns a hash reference of all actions and resources that the given
+user ($user) can perform.  The keys in the returned hash are the 
+actions and the values are list references containing the resources
+where those actions can be performed by the user.
+
+=head2 $client-E<gt>audit( $year, $month, $day )
+
+Interface to the L<Audit|PlugAuth::Plugin::Audit> plugin, if it is available.
+
+=head1 SEE ALSO
+
+L<Clustericious::Client>, 
+L<PlugAuth>, 
+L<plugauthclient>, 
+L<plugauthpasswd>,
+L<PlugAuth::Client::Tiny>
+
+=head1 AUTHOR
+
+Graham Ollis <gollis@sesda3.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2012 by NASA GSFC.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
