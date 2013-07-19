@@ -2,7 +2,7 @@ NAME
     PlugAuth::Client - PlugAuth Client
 
 VERSION
-    version 0.19_01
+    version 0.20
 
 SYNOPSIS
     In a perl program :
@@ -14,7 +14,7 @@ SYNOPSIS
      my $version = $r->version;
 
      # Authenticate user "alice", pw "sesame"
-     $r->login(user => "alice", password => "sesame");
+     $r->login("alice", "sesame");
      if ($r->auth) {
         print "authentication succeeded\n";
      } else {

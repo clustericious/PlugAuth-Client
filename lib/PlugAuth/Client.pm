@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: PlugAuth Client
-our $VERSION = '0.19_01'; # VERSION
+our $VERSION = '0.20'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -197,7 +197,7 @@ PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.19_01
+version 0.20
 
 =head1 SYNOPSIS
 
@@ -210,7 +210,7 @@ In a perl program :
  my $version = $r->version;
 
  # Authenticate user "alice", pw "sesame"
- $r->login(user => "alice", password => "sesame");
+ $r->login("alice", "sesame");
  if ($r->auth) {
     print "authentication succeeded\n";
  } else {

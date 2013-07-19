@@ -38,7 +38,7 @@
          }
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/plicease/plugauth-client/issues"
@@ -50,6 +50,6 @@
          "web" : "https://github.com/plicease/plugauth-client"
       }
    },
-   "version" : "0.19_01"
+   "version" : "0.20"
 }
 
