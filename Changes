@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - documentation fixes
 
 0.19_01   2013-07-19 10:11:21 America/New_York
   - support creating users with
