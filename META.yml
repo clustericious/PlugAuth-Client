@@ -27,4 +27,4 @@ resources:
   bugtracker: https://github.com/plicease/plugauth-client/issues
   homepage: http://perl.wdlabs.com/PlugAuth-Client/
   repository: git://github.com/plicease/plugauth-client.git
-version: 0.19
+version: 0.19_01

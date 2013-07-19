@@ -1,5 +1,8 @@
 Revision history for PlugAuth-Client
 
+0.19_01   2013-07-19 10:11:21 America/New_York
+  - support creating users with
+
 0.19      2013-06-30 19:19:23 America/New_York
   - use YAML::XS instead of YAML, since Clustericious requires YAML::XS (but not YAML)
 

@@ -1,3 +1,4 @@
+.travis.yml
 Changes
 LICENSE
 MANIFEST
@@ -13,6 +14,7 @@ lib/PlugAuth/Client.pm
 t/00-load.t
 t/01-get.t
 t/10-remove_prefixes.t
+t/create_user_with_groups.t
 t/pod.t
 xt/release/build_environment.t
 xt/release/changes.t

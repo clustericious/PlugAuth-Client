@@ -7,7 +7,7 @@ use Log::Log4perl qw(:easy);
 use Clustericious::Client;
 
 # ABSTRACT: PlugAuth Client
-our $VERSION = '0.19'; # VERSION
+our $VERSION = '0.19_01'; # VERSION
 
 
 route welcome      => 'GET', '/';
@@ -38,6 +38,7 @@ route create_user => 'POST', '/user', \("--user username --password password");
 route_args create_user => [
   { name => 'user',     type => '=s', required => 1, modifies_payload => 'hash' },
   { name => 'password', type => '=s', required => 1, modifies_payload => 'hash' },
+  { name => 'groups',   type => '=s', required => 0, modifies_payload => 'hash' },
 ];
 
 
@@ -196,7 +197,7 @@ PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.19
+version 0.19_01
 
 =head1 SYNOPSIS
 
@@ -254,13 +255,22 @@ Create a user with the given username and password.
 
 =over 4
 
-=item * username
+=item * user
 
 The new user's username
+
+REQUIRED
 
 =item * password
 
 The new user's password
+
+REQUIRED
+
+=item * groups
+
+List of groups as a comma separated string.  Using this option requires that
+the server is running PlugAuth 0.21 or better.
 
 =back
 
