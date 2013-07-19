@@ -6,7 +6,7 @@ PlugAuth::Client - PlugAuth Client
 
 =head1 VERSION
 
-version 0.19
+version 0.19_01
 
 =head1 SYNOPSIS
 
@@ -64,13 +64,22 @@ Create a user with the given username and password.
 
 =over 4
 
-=item * username
+=item * user
 
 The new user's username
+
+REQUIRED
 
 =item * password
 
 The new user's password
+
+REQUIRED
+
+=item * groups
+
+List of groups as a comma separated string.  Using this option requires that
+the server is running PlugAuth 0.21 or better.
 
 =back
 
