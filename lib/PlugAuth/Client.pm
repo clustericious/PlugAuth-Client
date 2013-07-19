@@ -20,7 +20,7 @@ In a perl program :
  my $version = $r->version;
 
  # Authenticate user "alice", pw "sesame"
- $r->login(user => "alice", password => "sesame");
+ $r->login("alice", "sesame");
  if ($r->auth) {
     print "authentication succeeded\n";
  } else {
