@@ -1,10 +1,16 @@
 language: perl
+
 install:
+  - cpanm -n Dist::Zilla
+  - dzil authordeps --missing | cpanm -n
   - cpanm -n Clustericious::Client
   - cpanm -n Log::Log4perl
   - cpanm -n Log::Log4perl::CommandLine
   - cpanm -n Term::Prompt
-script: HARNESS_IS_VERBOSE=1 prove -lvr t xt
+  - cpanm -n Test::CPAN::Changes Test::EOL Test::Fixme Test::NoTabs Test::Pod::Spelling::CommonMistakes Test::Spelling Test::Strict Test::Version || true
+
+script: dzil test -v
+
 perl:
   - "5.19"
   - "5.18"
