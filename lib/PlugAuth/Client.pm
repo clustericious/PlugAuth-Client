@@ -9,6 +9,12 @@ use Clustericious::Client;
 # ABSTRACT: PlugAuth Client
 # VERSION
 
+=head1 MOVED
+
+This is the old version of L<PlugAuth::Client> from before it was merged
+back into core L<PlugAuth>.  Please see the L<PlugAuth> main repository
+here: L<https://github.com/clustericious/PlugAuth>.
+
 =head1 SYNOPSIS
 
 In a perl program :

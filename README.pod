@@ -1,5 +1,13 @@
 =pod
 
+=encoding UTF-8
+
+=head1 MOVED
+
+This is the old version of L<PlugAuth::Client> from before it was merged
+back into core L<PlugAuth>.  Please see the L<PlugAuth> main repository
+here: L<https://github.com/clustericious/PlugAuth>.
+
 =head1 NAME
 
 PlugAuth::Client - PlugAuth Client
@@ -199,3 +207,4 @@ This software is copyright (c) 2012 by NASA GSFC.
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
+=cut
